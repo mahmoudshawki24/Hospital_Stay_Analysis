@@ -34,7 +34,7 @@
     "# Assuming the target column is the last column in train_df\n",
     "X_train = train_df.iloc[:, :-1]\n",
     "y_train = train_df.iloc[:, -1]"
-   ]
+  
   },
   {
    "cell_type": "code",
@@ -813,4 +813,30 @@
  "nbformat": 4,
  "nbformat_minor": 5
 }
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# عنوان للتطبيق
+st.title("تجربة Streamlit - عرض بيانات ورسم بياني")
+
+# بيانات تجريبية
+data = {
+    'الفئة': ['A', 'B', 'C', 'D'],
+    'القيم': [10, 23, 15, 7]
+}
+df = pd.DataFrame(data)
+
+# عرض الجدول
+st.subheader("البيانات:")
+st.write(df)
+
+# رسم بياني بسيط
+st.subheader("الرسم البياني:")
+fig, ax = plt.subplots()
+ax.bar(df['الفئة'], df['القيم'], color='skyblue')
+ax.set_xlabel("الفئة")
+ax.set_ylabel("القيمة")
+ax.set_title("رسم بياني بسيط")
+st.pyplot(fig)
 
